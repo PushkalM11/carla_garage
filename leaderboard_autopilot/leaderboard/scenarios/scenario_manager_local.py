@@ -227,11 +227,11 @@ class ScenarioManager(object):
                                                         #   carla.Rotation(pitch=-90)))
             
             # For third-person view
-            # location = ego_trans.transform(carla.Location(x=-4.5, z=2.3))
-            # self._spectator.set_transform(carla.Transform(location, carla.Rotation(pitch=-15.0, yaw=ego_trans.rotation.yaw)))
+            location = ego_trans.transform(carla.Location(x=-4.5, z=2.3))
+            self._spectator.set_transform(carla.Transform(location, carla.Rotation(pitch=-15.0, yaw=ego_trans.rotation.yaw)))
             
             # For bird's eye view
-            self._spectator.set_transform(carla.Transform(ego_trans.location + carla.Location(z=30), carla.Rotation(pitch=-90)))
+            # self._spectator.set_transform(carla.Transform(ego_trans.location + carla.Location(z=30), carla.Rotation(pitch=-90)))
 
     def get_running_status(self):
         """
