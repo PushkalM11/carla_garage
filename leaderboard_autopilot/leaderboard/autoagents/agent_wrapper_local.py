@@ -26,7 +26,7 @@ DATAGEN = int(os.environ.get('DATAGEN', 0))
 
 MAX_ALLOWED_RADIUS_SENSOR = 3.0
 QUALIFIER_SENSORS_LIMITS = {
-    'sensor.camera.rgb': 4,
+    'sensor.camera.rgb': 7,
     'sensor.lidar.ray_cast': 1,
     'sensor.other.radar': 2,
     'sensor.other.gnss': 1,
