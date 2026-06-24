@@ -57,8 +57,11 @@ class DataAgentAlpamayo(DataAgent):
   def _init(self, hd_map):
     # Base init only; skip DataAgent._init (BEV ObsManagers / augmented dummy vehicle).
     super(DataAgent, self)._init(hd_map)
-    if self.datagen:
-      self.shuffle_weather()
+    # NOTE: intentionally do NOT call shuffle_weather() here. DataAgent.shuffle_weather
+    # picks a random CARLA weather preset (about half of which are *Night presets) and
+    # overrides the simulation weather, ignoring the route XML. We want the <weathers>
+    # block in the route file to be honored, so we leave the leaderboard-applied route
+    # weather untouched.
     # LocalPlanner is required by the inherited _vehicle_obstacle_detected.
     self._local_planner = LocalPlanner(self._vehicle, opt_dict={}, map_inst=self.world_map)
 
