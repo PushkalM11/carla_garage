@@ -62,3 +62,21 @@ class AlpamayoConfig(GlobalConfig):
         'height': cam_height,
         'fov': fov,
     } for (cam_id, yaw, fov) in camera_layout]
+
+    # Simlingo consumes a single front camera with a *different* mount/optics than the
+    # Alpamayo surround rig: it sits at the driver height z=2.0 (not the 2.3 roof mount)
+    # and uses a 110 deg FOV (not 120). We collect it alongside the rig so a single run
+    # feeds both models. The simlingo-open-loop adapter reads cam_front_simlingo/ by name;
+    # the Alpamayo adapter selects its four cameras by name and ignores this extra folder.
+    self.cameras.append({
+        'id': 'cam_front_simlingo',
+        'x': -1.5,
+        'y': 0.0,
+        'z': 2.0,
+        'roll': 0.0,
+        'pitch': 0.0,
+        'yaw': 0.0,
+        'width': 1024,
+        'height': 512,
+        'fov': 110.0,
+    })
